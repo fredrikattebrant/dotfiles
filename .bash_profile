@@ -28,7 +28,7 @@ alias colorslist="set | egrep 'COLOR_\w*'"  # lists all the color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 
 # git prompt
-source ~/.git-completion.sh
+source ~/.gitcompletion.sh
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1='\[\e[1;34m\]\w\[\e[0m\] $(__git_ps1 "(%s)") \[\e[1;35m\]\$ \[\e[0m\]'
