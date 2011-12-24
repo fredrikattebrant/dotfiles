@@ -41,4 +41,12 @@ if [ -f `brew --prefix`/etc/autojump ]; then
   . `brew --prefix`/etc/autojump
 fi
 
+# groovy
 export GROOVY_HOME=/usr/local/Cellar/groovy/1.8.5/libexec
+
+# grails
+export GRAILS_HOME=/usr/local/grails/grails-2.0.0 #default
+if [ -f `~/.grails_version`]; then
+	source ~/.grails_version
+fi
+

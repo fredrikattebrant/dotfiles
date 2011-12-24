@@ -1,0 +1,23 @@
+alias grails="execute_grails_version grails" 
+alias grails-debug="execute_grails_version grails-debug"
+function execute_grails_version() {
+
+	GRAILS_CMD=$1
+	shift
+	if [ -f application.properties ]; then
+		export GRAILS_VERSION=`grep app.grails.version application.properties | sed -E 's/.*=(.*)/\1/'`
+		export GRAILS_HOME="/usr/local/grails/grails-$GRAILS_VERSION"
+		echo "application.properties found, using \$GRAILS_HOME of $GRAILS_HOME"
+	else
+		echo "application.properties NOT found, leaving \$GRAILS_HOME as $GRAILS_HOME"
+	fi
+	
+	if [ ! -d $GRAILS_HOME ]; then
+		echo "ERROR: Unable to find \$GRAILS_HOME directory at $GRAILS_HOME"
+		exit 1
+	fi
+	
+	echo $GRAILS_HOME/bin/$GRAILS_CMD $*
+	$GRAILS_HOME/bin/$GRAILS_CMD $*
+
+}
