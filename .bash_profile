@@ -1,3 +1,5 @@
+export PATH=$PATH:$HOME/bin
+
 export EDITOR=/usr/bin/vim
 
 export HISTSIZE=5000
@@ -37,6 +39,10 @@ if [ -f ~/.bash_aliases ]; then
   source ~/.bash_aliases
 fi
 
+if [ -f ~/.bashrc ]; then
+	source ~/.bashrc
+fi
+
 if [ -f `brew --prefix`/etc/autojump ]; then
   . `brew --prefix`/etc/autojump
 fi
@@ -47,6 +53,8 @@ export GROOVY_HOME=/usr/local/Cellar/groovy/1.8.5/libexec
 # grails
 export GRAILS_HOME=/usr/local/grails/grails-2.0.0 #default
 if [ -f `~/.grails_version`]; then
-	source ~/.grails_version
+	alias grails="execute_grails_version grails" 
+	alias grails-debug="execute_grails_version grails-debug"
+	. ~/.grails_version
 fi
 

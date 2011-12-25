@@ -1,5 +1,3 @@
-alias grails="execute_grails_version grails" 
-alias grails-debug="execute_grails_version grails-debug"
 function execute_grails_version() {
 
 	GRAILS_CMD=$1
@@ -12,9 +10,8 @@ function execute_grails_version() {
 		echo "application.properties NOT found, leaving \$GRAILS_HOME as $GRAILS_HOME"
 	fi
 	
-	if [ ! -d $GRAILS_HOME ]; then
+	if [ ! -f $GRAILS_HOME ]; then
 		echo "ERROR: Unable to find \$GRAILS_HOME directory at $GRAILS_HOME"
-		exit 1
 	fi
 	
 	echo $GRAILS_HOME/bin/$GRAILS_CMD $*
