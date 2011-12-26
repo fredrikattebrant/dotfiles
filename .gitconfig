@@ -20,3 +20,4 @@
   ui=auto
 [branch]
   autosetuprebase = always
+  autosetupmerge = always
