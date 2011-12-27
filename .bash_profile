@@ -25,7 +25,7 @@ export COLOR_GRAY='\e[0;30m'
 export COLOR_LIGHT_GRAY='\e[0;37m'
 alias colorslist="set | egrep 'COLOR_\w*'"  # lists all the color
 
-# 
+#
 #export TERM=xterm-color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 
@@ -33,14 +33,14 @@ export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 source ~/.gitcompletion.sh
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWDIRTYSTATE=1
-export PS1='\[\e[1;34m\]\w\[\e[0m\] $(__git_ps1 "(%s)") \[\e[1;35m\]\$ \[\e[0m\]'
+export PS1="\[$COLOR_LIGHT_BLUE\]\w\[$COLOR_NC\] \$(__git_ps1 '(%s)') \[$COLOR_LIGHT_PURPLE\]\$ \[$COLOR_NC\]"
 
 if [ -f ~/.bash_aliases ]; then
   source ~/.bash_aliases
 fi
 
 if [ -f ~/.bashrc ]; then
-	source ~/.bashrc
+  source ~/.bashrc
 fi
 
 if [ -f `brew --prefix`/etc/autojump ]; then
@@ -53,8 +53,8 @@ export GROOVY_HOME=/usr/local/Cellar/groovy/1.8.5/libexec
 # grails
 export GRAILS_HOME=/usr/local/grails/grails-2.0.0 #default
 if [ -f `~/.grails_version`]; then
-	alias grails="execute_grails_version grails" 
-	alias grails-debug="execute_grails_version grails-debug"
-	. ~/.grails_version
+  alias grails="execute_grails_version grails" 
+  alias grails-debug="execute_grails_version grails-debug"
+  . ~/.grails_version
 fi
 
