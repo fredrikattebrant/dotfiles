@@ -1,6 +1,6 @@
-alias mv='mv -i'
-alias rm='rm -i'
-alias cp='cp -i'
+alias mvi='mv -i'
+alias rmi='rm -i'
+alias cpi='cp -i'
 
 alias cd..='cd ..'
 
