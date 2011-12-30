@@ -58,3 +58,4 @@ if [ -f `~/.grails_version`]; then
   . ~/.grails_version
 fi
 
+eval "$(rbenv init -)"
