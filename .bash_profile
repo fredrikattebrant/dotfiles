@@ -48,14 +48,19 @@ if [ -f `brew --prefix`/etc/autojump ]; then
 fi
 
 # groovy
-export GROOVY_HOME=/usr/local/Cellar/groovy/1.8.5/libexec
+#export GROOVY_HOME=/usr/local/Cellar/groovy/1.8.5/libexec
+export GROOVY_HOME=/usr/local/Cellar/groovy/1.8.6/libexec
+export PATH=$PATH:$GROOVY_HOME/bin
 
 # grails
 export GRAILS_HOME=/usr/local/grails/grails-2.0.0 #default
 if [ -f `~/.grails_version`]; then
-  alias grails="execute_grails_version grails" 
+  alias grails="execute_grails_version grails"
   alias grails-debug="execute_grails_version grails-debug"
   . ~/.grails_version
 fi
+export PATH=$PATH:$GRAILS_HOME/bin
+
+export TODOTXT_DEFAULT_ACTION=ls
 
 eval "$(rbenv init -)"
