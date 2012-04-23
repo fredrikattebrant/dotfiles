@@ -7,3 +7,4 @@ ln -s ~/dotfiles/.gitconfig ~/
 ln -s ~/dotfiles/.gitignore.global ~/
 ln -s ~/dotfiles/.grails_version ~/
 ln -s ~/dotfiles/.todo.cfg ~/
+ln -s ~/dotfiles/todo_completion ~/

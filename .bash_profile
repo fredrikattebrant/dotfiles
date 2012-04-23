@@ -61,6 +61,9 @@ if [ -f `~/.grails_version`]; then
 fi
 export PATH=$PATH:$GRAILS_HOME/bin
 
+# todo.txt
 export TODOTXT_DEFAULT_ACTION=ls
+source todo_completion
+complete -F _todo t
 
 eval "$(rbenv init -)"
