@@ -56,10 +56,6 @@ export NODE_PATH=/usr/local/lib/node_modules
 export PATH=/usr/local/share/npm/bin:$PATH
 
 
-# ruby
-eval "$(rbenv init -)"
-
-
 # sencha Command
 export PATH=/Users/andreasarledal/bin/Sencha/Cmd/4.0.0.203:$PATH
 
