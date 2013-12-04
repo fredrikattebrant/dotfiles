@@ -38,32 +38,34 @@ export PS1="\[$COLOR_LIGHT_BLUE\]\w\[$COLOR_NC\] \$(__git_ps1 '(%s)') \[$COLOR_L
 if [ -f ~/.bash_aliases ]; then
   source ~/.bash_aliases
 fi
-
 if [ -f ~/.bashrc ]; then
   source ~/.bashrc
 fi
 
-if [ -f `brew --prefix`/etc/autojump ]; then
-  . `brew --prefix`/etc/autojump
+if [ -f ~/.git_rmb ]; then
+  source ~/.git_rmb
 fi
 
-# groovy
-#export GROOVY_HOME=/usr/local/Cellar/groovy/1.8.5/libexec
-export GROOVY_HOME=/usr/local/Cellar/groovy/1.8.6/libexec
-export PATH=$PATH:$GROOVY_HOME/bin
 
-# grails
-export GRAILS_HOME=/usr/local/grails/grails-2.0.0 #default
-if [ -f `~/.grails_version`]; then
-  alias grails="execute_grails_version grails"
-  alias grails-debug="execute_grails_version grails-debug"
-  . ~/.grails_version
-fi
-export PATH=$PATH:$GRAILS_HOME/bin
+# autojump
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
-# todo.txt
-export TODOTXT_DEFAULT_ACTION=ls
-source todo_completion
-complete -F _todo t
 
+# node
+export NODE_PATH=/usr/local/lib/node_modules
+export PATH=/usr/local/share/npm/bin:$PATH
+
+
+# ruby
 eval "$(rbenv init -)"
+
+
+# sencha Command
+export PATH=/Users/andreasarledal/bin/Sencha/Cmd/4.0.0.203:$PATH
+
+
+# GVM
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/Users/andreasarledal/.gvm/bin/gvm-init.sh" && -z $(which gvm-init.sh | grep '/gvm-init.sh') ]] && source "/Users/andreasarledal/.gvm/bin/gvm-init.sh"
+
+

@@ -22,8 +22,3 @@ export LESS_TERMCAP_us=$'\E[04;33;146m'
 export LESS="-mNR"
 
 alias less='less -R'
-
-#console_tweet https://github.com/seejohnrun/console_tweet
-alias tt='twitter tweet'
-
-alias t='todo.sh'
