@@ -1,39 +1,86 @@
-export PATH=$PATH:$HOME/bin
+#
+# .profile for fredrik
+#
+PATH=/usr/local/bin:$PATH:$HOME/bin
+export PATH
 
-export EDITOR=/usr/bin/vim
+## Homebrew
+#PATH=/usr/local/sbin:$PATH
+#Failed workaround for duplicity:
+#PYTHONPATH=/usr/local/lib/python2.7/site-packages
+#See: https://github.com/Homebrew/homebrew/issues/22584
 
-export HISTSIZE=5000
-export HISTCONTROL=ignoredups:erasedups
-export HISTTIMEFORMAT='%F %T '
+# ImageMagick:
+#MAGICK_HOME=$HOME/Applications/ImageMagick-latest
+#export MAGICK_HOME
+#PATH=$PATH:$MAGICK_HOME/bin
+#DYLD_LIBRARY_PATH=$MAGICK_HOME/lib
+#export DYLD_LIBRARY_PATH
 
-export COLOR_NC='\e[0m' # No Color
-export COLOR_WHITE='\e[1;37m'
-export COLOR_BLACK='\e[0;30m'
-export COLOR_BLUE='\e[0;34m'
-export COLOR_LIGHT_BLUE='\e[1;34m'
-export COLOR_GREEN='\e[0;32m'
-export COLOR_LIGHT_GREEN='\e[1;32m'
-export COLOR_CYAN='\e[0;36m'
-export COLOR_LIGHT_CYAN='\e[1;36m'
-export COLOR_RED='\e[0;31m'
-export COLOR_LIGHT_RED='\e[1;31m'
-export COLOR_PURPLE='\e[0;35m'
-export COLOR_LIGHT_PURPLE='\e[1;35m'
-export COLOR_BROWN='\e[0;33m'
-export COLOR_YELLOW='\e[1;33m'
-export COLOR_GRAY='\e[0;30m'
-export COLOR_LIGHT_GRAY='\e[0;37m'
-alias colorslist="set | egrep 'COLOR_\w*'"  # lists all the color
+MAGICK_CONFIGURE_PATH=$HOME/.magick
+export MAGICK_CONFIGURE_PATH
+
+### Functions:
+
+# list directory stack on per line
+function DIRS
+{
+  dirs | sed 's- -\
+-g'
+}
+
+# create dir and cd into it:
+function mkcddir
+{
+  mkdir "$1"
+  cd "$1"
+}
+
+# launch Visual Code Studio:
+function code
+{
+  VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
+}
 
 #
-#export TERM=xterm-color
-export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
+# Set Java version
+# Source:
+# http://www.jayway.com/2014/01/15/how-to-switch-jdk-version-on-mac-os-x-maverick/?utm_source=twitterfeed&utm_medium=twitter
+#
+# Usage:
+#     setjdk 1.7
+#
+function setjdk() {
+  if [ $# -ne 0 ]; then
+    removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
+    if [ -n "${JAVA_HOME+x}" ]; then
+      removeFromPath $JAVA_HOME
+    fi
+    export JAVA_HOME=`/usr/libexec/java_home -v $@`
+    export PATH=$JAVA_HOME/bin:$PATH
+  else
+    # print available versions
+    echo "Current: $(/usr/libexec/java_home -V)"
+  fi
+}
+function removeFromPath() {
+  export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
+}
+setjdk 1.7
 
-# git prompt
-source ~/.gitcompletion.sh
-export GIT_PS1_SHOWUNTRACKEDFILES=1
-export GIT_PS1_SHOWDIRTYSTATE=1
-export PS1="\[$COLOR_LIGHT_BLUE\]\w\[$COLOR_NC\] \$(__git_ps1 '(%s)') \[$COLOR_LIGHT_PURPLE\]\$ \[$COLOR_NC\]"
+
+# Scala
+#SCALA_HOME=/Applications/dev/scala
+#export SCALA_HOME
+#PATH=$PATH:$SCALA_HOME/bin
+
+#maven
+#M3_HOME=/usr/local/Cellar/maven/3.1.1
+#export M3_HOME
+##PATH=$PATH:$M3_HOME/bin
+
+#PS1="\h:\W \u\$ "
+PS1="\h:\W \$ "
 
 if [ -f ~/.bash_aliases ]; then
   source ~/.bash_aliases
@@ -46,22 +93,29 @@ if [ -f ~/.git_rmb ]; then
   source ~/.git_rmb
 fi
 
+function xtt
+{
+#
+# Usage:	xtt { title }	# default is username@hostname
+#
+#PS1='$ '
+if [ "$1" != "" ]
+then
+	title="$1"
+else
+	if [ "$USER" = "fxo" ]
+	then
+		title=`uname -n`
+	else
+		title="`whoami`@`uname -n`"
+	fi
+fi
 
-# autojump
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+echo -n "]0;$title"
+}
 
+# enable "next command" with ctrl-o:
+stty -iexten
 
-# node
-export NODE_PATH=/usr/local/lib/node_modules
-export PATH=/usr/local/share/npm/bin:$PATH
-
-
-# sencha Command
-export PATH=/Users/andreasarledal/bin/Sencha/Cmd/4.0.0.203:$PATH
-
-
-# GVM
-#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/Users/andreasarledal/.gvm/bin/gvm-init.sh" && -z $(which gvm-init.sh | grep '/gvm-init.sh') ]] && source "/Users/andreasarledal/.gvm/bin/gvm-init.sh"
-
-
+# adjust limits:
+ulimit -n 1024   # allow more open files

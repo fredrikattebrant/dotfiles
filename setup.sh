@@ -1,8 +1,8 @@
-# Assume cloned into ~/dotfiles
-ln -s ~/dotfiles/.bash_aliases ~/
-ln -s ~/dotfiles/.bash_profile ~/
-ln -s ~/dotfiles/.bashrc ~/
-ln -s ~/dotfiles/.gitcompletion.sh ~/
-ln -s ~/dotfiles/.gitconfig ~/
-ln -s ~/dotfiles/.gitignore.global ~/
-ln -s ~/dotfiles/.git_rmb ~/
+# Assume cloned into ~/git/dotfiles
+ln -s ~/git/dotfiles/.bash_aliases ~/
+ln -s ~/git/dotfiles/.bash_profile ~/
+ln -s ~/git/dotfiles/.bashrc ~/
+ln -s ~/git/dotfiles/.gitcompletion.sh ~/
+ln -s ~/git/dotfiles/.gitconfig ~/
+ln -s ~/git/dotfiles/.gitignore.global ~/
+ln -s ~/git/dotfiles/.git_rmb ~/

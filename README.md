@@ -1,6 +1,5 @@
 dotfiles
 ========
-After cloning, run setup.sh and then clone scm_breeze with 
-git clone git://github.com/ndbroadbent/scm_breeze.git ~/.scm_breeze
-and install it with
-~/.scm_breeze/install.sh
+
+2015-10-27 Diverged from AndreasArledal/dotfiles - not using the scm stuff but my own setup!
+
