@@ -119,3 +119,11 @@ stty -iexten
 
 # adjust limits:
 ulimit -n 1024   # allow more open files
+
+#
+# enable bash completion:
+#
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
