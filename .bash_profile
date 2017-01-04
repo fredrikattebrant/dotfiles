@@ -115,7 +115,8 @@ echo -n "]0;$title"
 }
 
 # enable "next command" with ctrl-o:
-stty -iexten
+# see: http://apple.stackexchange.com/questions/3253/ctrl-o-behavior-in-terminal-app?answertab=votes#tab-top
+stty discard undef
 
 # adjust limits:
 ulimit -n 1024   # allow more open files
