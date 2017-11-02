@@ -11,6 +11,7 @@
   ci = commit
   df = !git diff | colordiff
   lg = !git log | vim -
+  lof=log --pretty=format:"%h%x09%ae%x09%ai%x09%s" --graph --decorate
   lol = log --oneline --graph --decorate
   history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   unpushed = !"PROJ_BRANCH=$(git symbolic-ref HEAD | sed 's|refs/heads/||') && git log origin/$PROJ_BRANCH..HEAD"
