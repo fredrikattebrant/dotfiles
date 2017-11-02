@@ -68,6 +68,8 @@ function removeFromPath() {
 }
 setjdk 1.8
 
+# Store ssh keys in the keychain
+ssh-add -K
 
 # Scala
 #SCALA_HOME=/Applications/dev/scala
