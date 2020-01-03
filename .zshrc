@@ -2,6 +2,9 @@
 # .zshrc based on https://scriptingosx.com/2019/06/moving-to-zsh/
 #
 
+PATH=$PATH:$HOME/bin
+export PATH
+
 # enable "auto cd":
 setopt AUTO_CD
 
