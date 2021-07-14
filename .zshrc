@@ -1,6 +1,7 @@
 #
 # .zshrc based on https://scriptingosx.com/2019/06/moving-to-zsh/
 #
+#set -xv
 
 PATH=$PATH:$HOME/bin
 export PATH
@@ -34,8 +35,9 @@ setopt no_auto_remove_slash
 setopt interactivecomments
 
 # aliases
-alias lf='ls -F'
-alias ll='ls -lF'
+if [ -f ~/.aliases ]; then
+  source ~/.aliases
+fi
 
 #
 # Set Java version
@@ -62,6 +64,9 @@ function removeFromPath() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }
 
+# Default to Java 8 due to DependencyMap and Atlassian ...
+setjdk 1.8
+
 #
 # Enable completion
 #
@@ -77,3 +82,9 @@ setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
 zstyle ':vcs_info:git:*' formats '%F{240}(%b)%r%f'
 zstyle ':vcs_info:*' enable git
+
+#
+# NVM (Versioned NPM / Node)
+# 
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh

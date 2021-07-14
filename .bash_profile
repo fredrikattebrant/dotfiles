@@ -22,12 +22,34 @@ export MAGICK_CONFIGURE_PATH
 
 ### Functions:
 
-# list directory stack on per line
-function DIRS
-{
-  dirs | sed 's- -\
--g'
+function Dirs {
+  (
+    IFS="
+"
+    let ix=0
+    for dir in $(dirs -l -p)
+    do
+      cd "$dir"
+      echo "$ix $dir $(__git_ps1)"
+      let ix=ix+1
+    done
+  )
 }
+
+#alias d=Dirs
+
+#function p {
+#  IFS="
+#"
+#  pushd +"$1"
+#}
+
+
+#alias p1='p 1'
+#alias p2='p 2'
+#alias p3='p 3'
+#alias p4='p 4'
+#alias p5='p 5'
 
 # create dir and cd into it:
 function mkcddir
@@ -66,7 +88,7 @@ function setjdk() {
 function removeFromPath() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }
-setjdk 12
+setjdk 11
 
 # Store ssh keys in the keychain
 ssh-add -K
@@ -84,6 +106,9 @@ ssh-add -K
 #PS1="\h:\W \u\$ "
 PS1="\h:\W \$ "
 
+if [ -f ~/.aliases ]; then
+  source ~/.aliases
+fi
 if [ -f ~/.bash_aliases ]; then
   source ~/.bash_aliases
 fi
