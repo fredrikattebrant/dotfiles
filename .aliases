@@ -4,15 +4,12 @@
 alias la='ls -A'
 alias lf='ls -F'
 alias ll='ls -lF'
-alias think='xtt think; think'
-
 
 function p {
   IFS="
 "
   pushd "$1"
 }
-
 
 alias p1='p +1'
 alias p2='p +2'

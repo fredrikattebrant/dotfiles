@@ -10,7 +10,7 @@ export PATH
 setopt AUTO_CD
 
 # share history across multiple shells:
-setopt SHARE_HISTORY
+#setopt SHARE_HISTORY
 setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 
