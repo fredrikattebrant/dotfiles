@@ -18,3 +18,5 @@ alias p4='p +4'
 alias p5='p +5'
 
 alias dv='dirs -v'
+
+alias killCheatSheet='ps ax | grep Cheat | grep -v grep | pcol 1 | xargs kill'
