@@ -70,6 +70,9 @@ setjdk 1.8
 #
 # Enable completion
 #
+plugins=(... docker docker-compose
+)
+
 autoload -Uz compinit && compinit
 
 #
