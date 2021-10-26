@@ -2,4 +2,4 @@
 ssh-add -K
 
 # default Java:
-#setjdk 12
+setjdk 17
