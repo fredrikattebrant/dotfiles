@@ -73,10 +73,16 @@ setjdk 1.8
 plugins=(... docker docker-compose
 )
 
+# zsh-completions
+# (https://formulae.brew.sh/formula/zsh-completions)
+#if type brew &>/dev/null; then
+#  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+#fi
+
 autoload -Uz compinit && compinit
 
 #
-# Show git branch and repository in the RPROMPT
+# Show git branch and repository in the PROMPT
 #
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
@@ -90,4 +96,9 @@ zstyle ':vcs_info:*' enable git
 # NVM (Versioned NPM / Node)
 # 
 export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+# source $(brew --prefix nvm)/nvm.sh
+# This loads nvm:
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  
+# This loads nvm bash_completion:
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] \
+  && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  
