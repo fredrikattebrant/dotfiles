@@ -1,5 +1,5 @@
 # Store ssh keys in the keychain
-ssh-add -K
+ssh-add --apple-use-keychain
 
 # default Java:
 setjdk 17
