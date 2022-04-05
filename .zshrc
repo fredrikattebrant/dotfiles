@@ -102,3 +102,13 @@ export NVM_DIR=~/.nvm
 # This loads nvm bash_completion:
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] \
   && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  
+
+#
+# Converts image file to base64 encoded imageURL string
+#
+function img-data() {
+  TYPE=$(file --mime-type -b $1)
+  ENC=$(base64 $1)
+  echo "data:$TYPE;base64,$ENC"
+}
+
