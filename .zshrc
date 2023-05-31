@@ -2,6 +2,7 @@
 # .zshrc based on https://scriptingosx.com/2019/06/moving-to-zsh/
 #
 #set -xv
+#echo .zshrc
 
 PATH=$PATH:$HOME/bin
 export PATH
@@ -95,13 +96,24 @@ zstyle ':vcs_info:*' enable git
 #
 # NVM (Versioned NPM / Node)
 # 
-export NVM_DIR=~/.nvm
-# source $(brew --prefix nvm)/nvm.sh
-# This loads nvm:
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  
-# This loads nvm bash_completion:
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] \
-  && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  
+if [ "$(uname -m)" = "arm64" ]
+then
+  # Apple Silicon
+  export NVM_DIR="$HOME/.nvm"
+  # This loads nvm:
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  
+  # This loads nvm bash_completion:
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+else
+  # Intel
+  export NVM_DIR=~/.nvm
+  # source $(brew --prefix nvm)/nvm.sh
+  # This loads nvm:
+  # [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  
+  # This loads nvm bash_completion:
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] \
+    && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  
+fi
 
 #
 # Converts image file to base64 encoded imageURL string
@@ -112,3 +124,11 @@ function img-data() {
   echo "data:$TYPE;base64,$ENC"
 }
 
+# begin forge completion
+. <(forge --completion)
+# end forge completion
+
+# Load pyenv automatically:
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
