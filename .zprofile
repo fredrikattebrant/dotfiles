@@ -5,7 +5,7 @@
 #
 #echo ".zprofile"
 
-if [ "$(uname -m)" = "arm64" ]
+if [ -d /opt/homebrew ]
 then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 else
