@@ -124,6 +124,9 @@ function img-data() {
   echo "data:$TYPE;base64,$ENC"
 }
 
+#
+# Atlassian forge completion config - added by running: forge autocomplete install:
+#
 # begin forge completion
 . <(forge --completion)
 # end forge completion
@@ -132,3 +135,4 @@ function img-data() {
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
