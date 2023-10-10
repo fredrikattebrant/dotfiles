@@ -136,3 +136,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+
+#
+# ngrok
+#
+if command -v ngrok &>/dev/null; then
+   eval "$(ngrok completion)"
+fi
