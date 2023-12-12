@@ -83,6 +83,11 @@ plugins=(... docker docker-compose
 autoload -Uz compinit && compinit
 
 #
+# Timestamp in prompt
+#
+#
+PS1="[%D{%Y-%m-%d} %T] %1~ %# "
+
 # Show git branch and repository in the PROMPT
 #
 autoload -Uz vcs_info
