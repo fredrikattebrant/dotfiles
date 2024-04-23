@@ -86,7 +86,7 @@ autoload -Uz compinit && compinit
 # Timestamp in prompt
 #
 #
-PS1="[%D{%Y-%m-%d} %T] %1~ %# "
+PS1="[%m %D{%Y-%m-%d} %T] %1~ %# "
 
 # Show git branch and repository in the PROMPT
 #
@@ -109,6 +109,18 @@ then
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  
   # This loads nvm bash_completion:
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+  #
+  # Atlassian forge completion config - added by running: forge autocomplete install:
+  #
+  # begin forge completion
+  . <(forge --completion)
+  # end forge completion
+ 
+  # Load pyenv automatically:
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
 else
   # Intel
   export NVM_DIR=~/.nvm
@@ -128,20 +140,6 @@ function img-data() {
   ENC=$(base64 $1)
   echo "data:$TYPE;base64,$ENC"
 }
-
-#
-# Atlassian forge completion config - added by running: forge autocomplete install:
-#
-# begin forge completion
-. <(forge --completion)
-# end forge completion
-
-# Load pyenv automatically:
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-
 #
 # ngrok
 #
