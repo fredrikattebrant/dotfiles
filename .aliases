@@ -22,6 +22,10 @@ alias dv='dirs -v'
 alias killCheatSheet='ps ax | grep Cheat | grep -v grep | pcol 1 | xargs kill'
 
 #
+# Atlassian forge shell completion
+# forge is (currently) installed "in" nvm use 16, thus here's an alias to setup completion:
+alias setupForgeCompletion='. <(forge --completion)'
+
 # Disabling - broken for some reason?!?
 #
 # function 2webp {
