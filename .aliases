@@ -25,3 +25,14 @@ alias killCheatSheet='ps ax | grep Cheat | grep -v grep | pcol 1 | xargs kill'
 # Atlassian forge shell completion
 # forge is (currently) installed "in" nvm use 16, thus here's an alias to setup completion:
 alias setupForgeCompletion='. <(forge --completion)'
+
+# Disabling - broken for some reason?!?
+#
+# function 2webp {
+#   source="$1"
+#   dest="${1%.*}.wepb"
+#   echo Convert: $source
+#   echo To.....: $dest
+#   echo magick "$source" -quality 50 -define webp:lossless=true "$dest"
+#   magick "$source" -quality 50 -define webp:lossless=true "$dest"
+# }
