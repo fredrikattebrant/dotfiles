@@ -74,13 +74,23 @@ setjdk 1.8
 plugins=(... docker docker-compose
 )
 
+# Disabling this:
 # zsh-completions
 # (https://formulae.brew.sh/formula/zsh-completions)
 #if type brew &>/dev/null; then
 #  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 #fi
+# autoload -Uz compinit && compinit
 
-autoload -Uz compinit && compinit
+# Switching to this:
+# https://docs.brew.sh/Shell-Completion
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
 
 #
 # Timestamp in prompt
