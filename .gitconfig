@@ -1,9 +1,9 @@
 [user]
-  name = fredrikattebrant
+  name = Fredrik Attebrant
   email = fredrik.attebrant@gmail.com
 [core]
   excludesfile = ~/.gitignore.global
-	autocrlf = input
+  autocrlf = input
 [alias]
   co = checkout
   stat = status
@@ -28,4 +28,4 @@
   autosetuprebase = always
   autosetupmerge = always
 [init]
-	defaultBranch = main
+  defaultBranch = main
