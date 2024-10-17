@@ -65,8 +65,8 @@ function removeFromPath() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }
 
-# Default to Java 8 due to DependencyMap and Atlassian ...
-setjdk 1.8
+# Default to Java 17 due to DependencyMap and Atlassian ...
+setjdk 17
 
 #
 # Enable completion
@@ -118,7 +118,11 @@ then
   # This loads nvm:
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  
   # This loads nvm bash_completion:
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+  # Default npm: FIXME/Still broken?!?:
+  [ -s $HOME/.nvmrc ] && nvm use $(cat $HOME/.nvmrc)
+  echo -n "NPM: " && which npm && npm ls -g && which forge
 
   #
   # Atlassian forge completion config - added by running: forge autocomplete install:
