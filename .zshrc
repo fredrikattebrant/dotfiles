@@ -122,7 +122,6 @@ then
 
   # Default npm: FIXME/Still broken?!?:
   [ -s $HOME/.nvmrc ] && nvm use $(cat $HOME/.nvmrc)
-  echo -n "NPM: " && which npm && npm ls -g && which forge
 
   #
   # Atlassian forge completion config - added by running: forge autocomplete install:
