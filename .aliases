@@ -26,6 +26,13 @@ alias killCheatSheet='ps ax | grep Cheat | grep -v grep | pcol 1 | xargs kill'
 # forge is (currently) installed "in" nvm use 16, thus here's an alias to setup completion:
 alias setupForgeCompletion='. <(forge --completion)'
 
+#
+# Alias to switch to the 8.2.10 version of the Atlassian SDK:
+alias SetAmps8210='PATH=/opt/homebrew/Cellar/atlassian-plugin-sdk8210/8.2.10/bin:$PATH'
+
+# DM config support
+alias copyDmDataCenterKey='pbcopy < ~/.dmdev/dm-datacenter-key'
+
 # Disabling - broken for some reason?!?
 #
 # function 2webp {
