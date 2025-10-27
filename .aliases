@@ -27,8 +27,9 @@ alias killCheatSheet='ps ax | grep Cheat | grep -v grep | pcol 1 | xargs kill'
 alias setupForgeCompletion='. <(forge --completion)'
 
 #
-# Alias to switch to the 8.2.10 version of the Atlassian SDK:
+# Aliases for setting the correct AMPS version:
 alias SetAmps8210='PATH=/opt/homebrew/Cellar/atlassian-plugin-sdk8210/8.2.10/bin:$PATH'
+alias SetAmps911='PATH=/opt/homebrew/Cellar/atlassian-plugin-sdk/9.1.1/bin:$PATH'
 
 # DM config support
 alias copyDmDataCenterKey='pbcopy < ~/.dmdev/dm-datacenter-key'
@@ -43,3 +44,4 @@ alias copyDmDataCenterKey='pbcopy < ~/.dmdev/dm-datacenter-key'
 #   echo magick "$source" -quality 50 -define webp:lossless=true "$dest"
 #   magick "$source" -quality 50 -define webp:lossless=true "$dest"
 # }
+
