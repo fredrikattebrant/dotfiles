@@ -40,6 +40,18 @@ if [ -f ~/.aliases ]; then
   source ~/.aliases
 fi
 
+# vd from to - quickly change directory using sed replacement.
+function vd {
+  cd $(echo "$PWD" | sed "s/$1/$2/g")
+}
+
+# 
+function pollJiraVersions {
+  ATLASSIAN_EMAIL=development@dependency-map.com \
+  ATLASSIAN_API_TOKEN_FILE=$HOME/.dmdev/marketplace-api-token-202060605 \
+  pollJiraSoftwareVersions.sh "$@"
+}
+
 #
 # Set Java version
 # Source:
@@ -65,7 +77,7 @@ function removeFromPath() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }
 
-# Default to Java 17 due to DependencyMap and Atlassian ...
+# Default to Java 17 due to DependencyMap and Atlassian / Jira 10.
 setjdk 17
 
 #
