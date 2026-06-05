@@ -45,11 +45,16 @@ function vd {
   cd $(echo "$PWD" | sed "s/$1/$2/g")
 }
 
-# 
+# Run pollJiraSoftwareVersions.sh with the ATLASSIAN API token
 function pollJiraVersions {
-  ATLASSIAN_EMAIL=development@dependency-map.com \
-  ATLASSIAN_API_TOKEN_FILE=$HOME/.dmdev/marketplace-api-token-202060605 \
+  ATLASSIAN_EMAIL_FILE=$HOME/.dmdev/marketplace-api-email \
+  ATLASSIAN_API_TOKEN_FILE=$HOME/.dmdev/marketplace-api-token \
   pollJiraSoftwareVersions.sh "$@"
+}
+
+# Convert ASCII values to text
+function ascii2text {
+  echo "$@" | awk '{ for (i=1; i<=NF; i++) printf "%c", $i; print "" }'
 }
 
 #
