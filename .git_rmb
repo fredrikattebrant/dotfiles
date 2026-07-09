@@ -1,9 +1,9 @@
 function rmb {
-  current_branch=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+  current_branch=$(git branch --show-current 2>/dev/null)
   if [ "$current_branch" != "master" ]; then
     echo "WARNING: You are on branch $current_branch, NOT master."
   fi
-    echo "Fetching merged branches..."
+  echo "Fetching merged branches..."
   git remote prune origin
   remote_branches=$(git branch -r --merged | grep -v '/master$' | grep -v "/$current_branch$")
   local_branches=$(git branch --merged | grep -v 'master$' | grep -v "$current_branch$")
@@ -20,10 +20,18 @@ function rmb {
     read -p "Continue? (y/n): " -n 1 choice
     echo
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
-      # Remove remote branches
-      git push origin `git branch -r --merged | grep -v '/master$' | grep -v "/$current_branch$" | sed 's/origin\//:/g' | tr -d '\n'`
-      # Remove local branches
-      git branch -d `git branch --merged | grep -v 'master$' | grep -v "$current_branch$" | sed 's/origin\///g' | tr -d '\n'`
+      while IFS= read -r branch; do
+        branch="${branch#"${branch%%[![:space:]]*}"}"
+        branch="${branch%"${branch##*[![:space:]]}"}"
+        branch="${branch#origin/}"
+        [ -n "$branch" ] && git push origin --delete "$branch"
+      done <<< "$remote_branches"
+      while IFS= read -r branch; do
+        branch="${branch#\*}"
+        branch="${branch#"${branch%%[![:space:]]*}"}"
+        branch="${branch%"${branch##*[![:space:]]}"}"
+        [ -n "$branch" ] && git branch -d "$branch"
+      done <<< "$local_branches"
     else
       echo "No branches removed."
     fi
