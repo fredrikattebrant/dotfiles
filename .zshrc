@@ -87,22 +87,12 @@ setjdk 17
 
 #
 # Enable completion
-#
-plugins=(docker docker-compose)
-
-# Disabling this:
-# zsh-completions
-# (https://formulae.brew.sh/formula/zsh-completions)
-#if type brew &>/dev/null; then
-#  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-#fi
-# autoload -Uz compinit && compinit
-
-# Switching to this:
 # https://docs.brew.sh/Shell-Completion
+#
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  FPATH="$HOME/.zsh/completions:${FPATH}"
 
   autoload -Uz compinit
   compinit
