@@ -1,3 +1,13 @@
 .DS_Store
 *.swp
 *.swo
+
+# Secrets and credentials
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*
+secrets/

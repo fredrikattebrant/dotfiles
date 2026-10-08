@@ -1,3 +1,7 @@
+# The following lines were added by Docker Desktop to add commands to your PATH.
+export PATH="$PATH:$HOME/.docker/bin"
+# End of Docker Desktop section.
+
 #
 # .profile for fredrik
 #
@@ -88,7 +92,7 @@ function setjdk() {
 function removeFromPath() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }
-setjdk 11
+setjdk 17
 
 # Store ssh keys in the keychain
 ssh-add -K
@@ -114,10 +118,6 @@ if [ -f ~/.bash_aliases ]; then
 fi
 if [ -f ~/.bashrc ]; then
   source ~/.bashrc
-fi
-
-if [ -f ~/.git_rmb ]; then
-  source ~/.git_rmb
 fi
 
 function xtt

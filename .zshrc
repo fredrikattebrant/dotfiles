@@ -40,9 +40,9 @@ if [ -f ~/.aliases ]; then
   source ~/.aliases
 fi
 
-# vd from to - quickly change directory using sed replacement.
+# vd from to - quickly change directory using string replacement.
 function vd {
-  cd $(echo "$PWD" | sed "s/$1/$2/g")
+  cd "${PWD/$1/$2}"
 }
 
 # Run pollJiraSoftwareVersions.sh with the ATLASSIAN API token
@@ -87,23 +87,12 @@ setjdk 17
 
 #
 # Enable completion
-#
-plugins=(... docker docker-compose
-)
-
-# Disabling this:
-# zsh-completions
-# (https://formulae.brew.sh/formula/zsh-completions)
-#if type brew &>/dev/null; then
-#  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-#fi
-# autoload -Uz compinit && compinit
-
-# Switching to this:
 # https://docs.brew.sh/Shell-Completion
+#
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  FPATH="$HOME/.zsh/completions:${FPATH}"
 
   autoload -Uz compinit
   compinit
@@ -166,8 +155,8 @@ fi
 # Converts image file to base64 encoded imageURL string
 #
 function img-data() {
-  TYPE=$(file --mime-type -b $1)
-  ENC=$(base64 $1)
+  TYPE=$(file --mime-type -b "$1")
+  ENC=$(base64 "$1")
   echo "data:$TYPE;base64,$ENC"
 }
 #
