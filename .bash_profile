@@ -120,10 +120,6 @@ if [ -f ~/.bashrc ]; then
   source ~/.bashrc
 fi
 
-if [ -f ~/.git_rmb ]; then
-  source ~/.git_rmb
-fi
-
 function xtt
 {
 #

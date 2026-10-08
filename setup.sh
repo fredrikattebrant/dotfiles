@@ -17,8 +17,6 @@ link .bash_profile .bash_profile
 link .zshrc .zshrc
 link .zprofile .zprofile
 link .zlogin .zlogin
-link .gitcompletion.sh .gitcompletion.sh
 link .gitconfig .gitconfig
 link .gitignore.global .gitignore.global
-link .git_rmb .git_rmb
 link .tmux.conf .tmux.conf
