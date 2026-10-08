@@ -92,7 +92,7 @@ function setjdk() {
 function removeFromPath() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }
-setjdk 11
+setjdk 17
 
 # Store ssh keys in the keychain
 ssh-add -K
