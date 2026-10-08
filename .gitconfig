@@ -4,6 +4,7 @@
 [core]
   excludesfile = ~/.gitignore.global
   autocrlf = input
+	editor = cursor --wait
 [alias]
   co = checkout
   stat = status
@@ -29,3 +30,5 @@
   autosetupmerge = always
 [init]
   defaultBranch = main
+[fetch]
+	prune = true
